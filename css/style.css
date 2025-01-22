@@ -12,3 +12,30 @@ body {
   border: 1px solid black;
   padding: 20px 30px;
 }
+
+/* insert page */
+.insert-menu {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 60vw;
+  height: 50vh;
+  border: 1px solid black;
+  background-color: white;
+  padding: 10px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.close {
+  position: absolute;
+  border: 1px solid black;
+  padding: 5px;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
