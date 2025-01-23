@@ -1,6 +1,25 @@
 <?php  
 include 'functions.php';
-$books = query("SELECT * FROM books")
+$books = query("SELECT * FROM books");
+
+if (isset($_POST['submit'])) {
+    
+    if (insert() > 0) {
+        echo "
+            <script>
+                alert('upload berhasil!');
+                document.location.href = 'index.php';
+            </script>
+        ";
+    } else {
+        echo "
+            <script>
+                alert('upload gagal!');
+            </script>
+        ";
+    }
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,15 +40,12 @@ $books = query("SELECT * FROM books")
             <div class="item">
                 <h1><?= $book['judul'] ?></h1>
             </div>
-            <div class="item">
-                <h1>test2</h1>
-            </div>
         <?php endforeach ?>
     </div>
     
     <div class="insert-menu">
         <span href="" class="close">X</span>
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
 
             <label for="judul_buku">Masukkan judul buku :   </label>
             <input type="text" name="judul_buku" id="judul_buku">
@@ -42,6 +58,8 @@ $books = query("SELECT * FROM books")
 
             <label for="deskripsi">Masukkan deskripsi buku :</label>
             <input type="text" name="deskripsi" id="deskripsi">
+
+            <input type="file" name="gambar" accept="image/jpg, image/jpeg, image/png">
 
             <button name="submit">Submit</button>
         </form>
