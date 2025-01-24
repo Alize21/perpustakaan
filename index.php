@@ -38,7 +38,16 @@ if (isset($_POST['submit'])) {
     <div class="container">
         <?php foreach( $books as $book ) : ?>
             <div class="item">
-                <h1><?= $book['judul'] ?></h1>
+                <div class="thumb"><img src="img/<?= $book['gambar']?>" alt="thumb"></div>
+                <div class="deskription">
+                    <h1><?= $book["judul"] ?></h1>
+                    <p><?= $book["dekripsi"] ?></p>
+                    <div class="categories">
+                        <h4><?= $book["kategori"] ?></h4>
+                        <h4><?= $book["penulis"] ?></h4>
+                        <h4><?= $book["status"] ?></h4>
+                    </div>
+                </div>
             </div>
         <?php endforeach ?>
     </div>
@@ -57,7 +66,7 @@ if (isset($_POST['submit'])) {
             <input type="text" name="kategori" id="kategori">
 
             <label for="deskripsi">Masukkan deskripsi buku :</label>
-            <input type="text" name="deskripsi" id="deskripsi">
+            <input type="text" name="deskripsi" id="deskripsi" maxlength="350" placeholder="Maksimal 300 karakter">
 
             <input type="file" name="gambar" accept="image/jpg, image/jpeg, image/png">
 
