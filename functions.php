@@ -25,6 +25,12 @@ function insert() {
     return mysqli_affected_rows($conn);
 }
 
+function deleteItem($id) {
+    global $conn;
+    mysqli_query($conn, "DELETE FROM books WHERE id = $id");
+    return mysqli_affected_rows($conn);
+}
+
 function upload() {
     $gambar = $_FILES['gambar'];
 

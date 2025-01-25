@@ -46,6 +46,7 @@ if (isset($_POST['submit'])) {
                         <h4><?= $book["kategori"] ?></h4>
                         <h4><?= $book["penulis"] ?></h4>
                         <h4><?= $book["status"] ?></h4>
+                        <a href="delete.php?id=<?= $book["id"] ?>" onclick="return confirm('Hapus buku?')">hapus buku</a>
                     </div>
                 </div>
             </div>
