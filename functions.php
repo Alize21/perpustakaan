@@ -12,6 +12,7 @@ function query($query) {
     return $books;
 }
 
+
 function insert() {
     global $conn;
     $judul = htmlspecialchars($_POST["judul_buku"]);
@@ -25,11 +26,42 @@ function insert() {
     return mysqli_affected_rows($conn);
 }
 
-function deleteItem($id) {
+
+function deleteItem($id, $foto) {
     global $conn;
+
+    if (file_exists("img/" . $foto)) {
+        unlink("img/" . $foto);  
+    }
     mysqli_query($conn, "DELETE FROM books WHERE id = $id");
     return mysqli_affected_rows($conn);
 }
+
+
+function update($id) {
+    global $conn;
+
+    $judul = htmlspecialchars($_POST["judul_buku"]);
+    $penulis = htmlspecialchars($_POST["penulis"]);
+    $kategori = htmlspecialchars($_POST["kategori"]);
+    $deskripsi = htmlspecialchars($_POST["deskripsi"]);
+
+    // jika user tidak mengupload gambar
+    if ($_FILES["gambar"]["error"] === 4) {
+        $foto = $_POST["gambar"]; // pakai gambar sebelumnya
+    } else {
+        if (file_exists("img/" . $_POST["gambar"])) {
+            unlink("img/" . $_POST["gambar"]);  
+        }
+        $foto = upload();
+    }
+
+    mysqli_query(
+        $conn, "UPDATE books SET judul = '$judul', gambar= '$foto', penulis= '$penulis', kategori= '$kategori', dekripsi= '$deskripsi' WHERE id = $id"
+     );
+    return mysqli_affected_rows($conn);
+}
+
 
 function upload() {
     $gambar = $_FILES['gambar'];

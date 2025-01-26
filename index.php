@@ -42,11 +42,12 @@ if (isset($_POST['submit'])) {
                 <div class="deskription">
                     <h1><?= $book["judul"] ?></h1>
                     <p><?= $book["dekripsi"] ?></p>
+                    <a href="update.php?id=<?= $book["id"] ?>">edit</a>
                     <div class="categories">
                         <h4><?= $book["kategori"] ?></h4>
                         <h4><?= $book["penulis"] ?></h4>
                         <h4><?= $book["status"] ?></h4>
-                        <a href="delete.php?id=<?= $book["id"] ?>" onclick="return confirm('Hapus buku?')">hapus buku</a>
+                        <a href="delete.php?id=<?= $book["id"] ?>&gambar=<?= $book['gambar']?>" onclick="return confirm('Hapus buku?')">hapus buku</a>
                     </div>
                 </div>
             </div>

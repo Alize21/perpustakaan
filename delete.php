@@ -2,8 +2,9 @@
 include "functions.php";
 
 $id = $_GET["id"];
+$gambar = $_GET["gambar"];
 
-if (deleteItem($id) > 0) {
+if (deleteItem($id, $gambar) > 0) {
     echo "
         <script>
             alert('buku berhasil dihapus!');
