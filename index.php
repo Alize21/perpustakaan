@@ -54,6 +54,8 @@ if (isset($_POST['submit'])) {
         <?php endforeach ?>
     </div>
     
+    <a href="register.php">Halaman register</a>
+
     <div class="insert-menu">
         <span href="" class="close">X</span>
         <form action="" method="post" enctype="multipart/form-data">
@@ -75,7 +77,7 @@ if (isset($_POST['submit'])) {
             <button name="submit">Submit</button>
         </form>
     </div>
-
+    
     <script src="js/script.js"></script>
 </body>
 </html>

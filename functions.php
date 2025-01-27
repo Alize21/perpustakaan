@@ -104,4 +104,52 @@ function upload() {
 
     return $newNamaFile;
 }
+
+
+function register() {
+    global $conn;
+
+    $username = $_POST["username"];
+    $password = mysqli_real_escape_string($conn, $_POST["password"]);
+    $cPassword = mysqli_real_escape_string($conn, $_POST["password2"]);
+
+    // hindari user dengan nama sama
+    $user = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
+    if(mysqli_fetch_assoc($user)) {
+        echo "
+        <script>
+            alert('username dengan nama ini sudah terdaftar!');
+        </script>
+        ";
+
+        return false;
+    }  
+
+    // confirmasi password
+    if ($password !== $cPassword) {
+        echo "
+        <script>
+            alert('konfirmasi password tidak sesuai!');
+        </script>
+        ";
+
+        return false; 
+    }
+
+    // panjang password kurang dari 6 character
+    if (strlen($password) < 6) {
+        echo "
+        <script>
+            alert('panjang password tidak boleh kurang dari 6 character!');
+        </script>
+        ";
+
+        return false; 
+    }
+
+    $password = password_hash($password, PASSWORD_DEFAULT);
+    mysqli_query($conn, "INSERT INTO users VALUES('', '$username', '$password')");
+
+    return mysqli_affected_rows($conn);
+}
 ?>
