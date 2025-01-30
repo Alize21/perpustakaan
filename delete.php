@@ -1,5 +1,10 @@
 <?php 
 include "functions.php";
+session_start();
+
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+}
 
 $id = $_GET["id"];
 $gambar = $_GET["gambar"];

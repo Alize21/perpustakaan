@@ -1,5 +1,10 @@
 <?php 
 include "functions.php";
+session_start();
+
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+}
 
 $bookId = $_GET["id"];
 $book = query("SELECT * FROM books WHERE id = $bookId")[0]; 

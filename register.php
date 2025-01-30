@@ -1,5 +1,6 @@
 <?php 
 include "functions.php";
+session_start();
 
 if (isset($_POST["register"])) {
 
@@ -46,6 +47,7 @@ if (isset($_POST["register"])) {
             <li>
                 <button name="register">Register!</button>
             </li>
+            <button><a href="login.php">kembali ke halaman login</a></button>
         </ul>
     </form>
 

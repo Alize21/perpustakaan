@@ -1,5 +1,11 @@
 <?php  
 include 'functions.php';
+session_start();
+
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+}
+
 $books = query("SELECT * FROM books");
 
 if (isset($_POST['submit'])) {
@@ -77,7 +83,7 @@ if (isset($_POST['submit'])) {
             <button name="submit">Submit</button>
         </form>
     </div>
-    
+    <a href="logout.php">Logout</a>
     <script src="js/script.js"></script>
 </body>
 </html>
