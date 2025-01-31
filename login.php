@@ -2,6 +2,20 @@
 include "functions.php";
 session_start();
 
+// cek cookie
+if (isset($_COOKIE["id"]) && isset($_COOKIE["key"])) {
+
+    $id = $_COOKIE["id"];
+    $key = $_COOKIE["key"];
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id'");
+    $row = mysqli_fetch_assoc($result);
+
+    if ($key === hash("sha384", $row["username"])) {
+        $_SESSION["login"] = true;
+    }
+
+}
+
 // arahkan user ke halaman utama jika ada session
 if (isset($_SESSION["login"])) {
     header("Location: index.php");
@@ -20,6 +34,12 @@ if (isset($_POST["login"])) {
     
         if (password_verify($password, $row["password"])) {
             
+            // buat cookie
+            if (isset($_POST["remember"])) {
+                setcookie("id", $row["id"], time() + (86400 * 2));
+                setcookie("key", hash("sha384", $row["username"]), time() + (86400 * 2));
+            }
+
             $_SESSION["login"] = true;
             header("Location: index.php");
             exit;
@@ -57,8 +77,10 @@ if (isset($_POST["login"])) {
             </li>
 
             <li>
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember">Remember me</label>
                 <button type="submit" name="login">Login!</button>
-                <button><a href="register.php">register</a></button>
+                <button><a href="register.php">Register</a></button>
             </li>
             <?php if (isset($error)) :?>
                 <p class="error">password atau username salah!</p>          
