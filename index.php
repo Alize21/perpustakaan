@@ -41,6 +41,8 @@ if (isset($_POST['submit'])) {
     <h1>Perpustakaan</h1>
     <button class="tambah-buku">tambah buku</button>
     
+    <input id="keyword" type="text" name="keyword" placeholder="Masukkan Judul buku" autocomplete="off" autofocus size="40">
+
     <div class="container">
         <?php foreach( $books as $book ) : ?>
             <div class="item">
