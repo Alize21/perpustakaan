@@ -55,37 +55,46 @@ if (isset($_POST["login"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="https://kit.fontawesome.com/252cc19830.js" crossorigin="anonymous"></script>
     <title>Login</title>
-    <style>
-        .error {
-            font-style: italic;
-            color: red;
-        }
-    </style>
 </head>
 <body>
-    <form action="" method="post">
-        <ul>
-            <li>
-                <label for="username">Username: </label>
-                <input type="text" name="username" id="username">
-            </li>
+    <div class="container">
+        <h1>Login Form</h1>
+        <form action="" method="post">
+            <ul>
+                <li class="input">
+                    <label for="username"><i class="fa-solid fa-user"></i></label>
+                    <input type="text" name="username" id="username" placeholder="Username" required>
+                </li>
 
-            <li>
-                <label for="password">Password: </label>
-                <input type="password" name="password" id="password">
-            </li>
+                <li class="input">
+                    <label for="password"><i class="fa-solid fa-lock"></i></label>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                </li>
 
-            <li>
-                <input type="checkbox" name="remember" id="remember">
-                <label for="remember">Remember me</label>
-                <button type="submit" name="login">Login!</button>
-                <button><a href="register.php">Register</a></button>
-            </li>
-            <?php if (isset($error)) :?>
-                <p class="error">password atau username salah!</p>          
-            <?php endif ?>
-        </ul>
-    </form>
+                <?php if (isset($error)) :?>
+                    <li>
+                        <p class="error">Account does not exist or wrong password and username</p>  
+                    </li>        
+                <?php endif ?>
+
+                <li>
+                    <button class="button" type="submit" name="login">Login!</button>
+                </li>
+
+                <li>
+                    <input class="cookie" type="checkbox" name="remember" id="remember">
+                    <label class="cookie" for="remember">Remember me</label>
+                </li>
+
+                <li>
+                    <p>Not a member? <a href="register.php">Sign-up now!</a></p>
+                </li>
+                    
+            </ul>
+        </form>
+    </div>
 </body>
 </html>
