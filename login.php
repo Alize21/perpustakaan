@@ -41,6 +41,7 @@ if (isset($_POST["login"])) {
             }
 
             $_SESSION["login"] = true;
+            // header("Location: index.php?user=" . $row["id"]);
             header("Location: index.php");
             exit;
         }
