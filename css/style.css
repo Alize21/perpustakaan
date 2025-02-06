@@ -18,8 +18,8 @@ body {
 
 .content {
   display: grid;
-  /* grid-template-columns: repeat(2, 1fr); */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
   gap: 10px;
   justify-content: center;
 }
@@ -60,6 +60,11 @@ body {
   position: relative;
   z-index: 10;
 }
+.deskription p {
+  /* max-width: 500px; */
+  word-wrap: break-word;
+  word-break: break-word;
+}
 
 .categories {
   position: absolute;
@@ -87,7 +92,7 @@ body {
 /* insert page */
 .insert-menu {
   box-sizing: border-box;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -101,8 +106,9 @@ body {
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 99;
 }
+
 .close {
   position: absolute;
   border: 1px solid black;
@@ -111,12 +117,16 @@ body {
   right: 0;
   cursor: pointer;
 }
+#deskripsi {
+  height: 40px;
+}
 
 /* nav bar */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
+  /* height: 10vh; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,8 +134,13 @@ nav {
   color: white;
   z-index: 999;
 }
-nav h1 {
+.head {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 20px;
   margin-left: 20px;
+  text-decoration: none;
+  color: white;
 }
 
 .navigation {

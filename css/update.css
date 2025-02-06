@@ -1,0 +1,76 @@
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* nav bar */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkblue;
+  color: white;
+  z-index: 999;
+}
+.head {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 20px;
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 30px;
+  gap: 5vw;
+}
+.tambah-buku {
+  cursor: pointer;
+}
+.navigation a {
+  text-decoration: none;
+  color: white;
+  transition: 0.4s ease;
+}
+.navigation a:hover {
+  color: red;
+}
+/* akhir nav-bar */
+li {
+  list-style: none;
+}
+.edit {
+  margin-top: 100px;
+}
+
+#deskripsi {
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+li button {
+  margin-top: 10px;
+  height: 5vh;
+  font-size: 18px;
+  transition: all 0.3s;
+  border: 1px solid black;
+}
+li button:hover {
+  background-color: black;
+  color: white;
+  outline: none;
+}
+
+li a {
+  color: black;
+  text-decoration: none;
+}

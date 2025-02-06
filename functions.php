@@ -59,7 +59,8 @@ function update($id) {
     mysqli_query(
         $conn, "UPDATE books SET judul = '$judul', gambar= '$foto', penulis= '$penulis', kategori= '$kategori', dekripsi= '$deskripsi' WHERE id = $id"
      );
-    return mysqli_affected_rows($conn);
+    // return mysqli_affected_rows($conn);
+    return [$judul, $penulis, $kategori, $deskripsi, $foto];
 }
 
 

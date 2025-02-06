@@ -20,17 +20,24 @@ keyword.addEventListener("input", function () {
 
 // munculkan menu insert
 tambahBuku.onclick = () => {
-  insertMenu.style.display = "flex";
+  insertMenu.style.display = "block";
 };
-
 if (closeButton) {
   closeButton.onclick = () => {
     insertMenu.style.display = "none";
   };
 }
-
 document.addEventListener("click", function (e) {
-  if (!insertMenu.contains(e.target) && insertMenu.style.display === "flex" && !tambahBuku.contains(e.target)) {
+  if (!insertMenu.contains(e.target) && insertMenu.style.display === "block" && !tambahBuku.contains(e.target)) {
     insertMenu.style.display = "none";
+  }
+});
+
+// mencegah user memasukkan gambar kosong ke database
+document.querySelector(".insert-menu").addEventListener("submit", function (e) {
+  const inputFile = document.querySelector("#inputFile");
+  if (!inputFile.files.length) {
+    e.preventDefault();
+    alert("please insert image first");
   }
 });

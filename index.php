@@ -41,12 +41,11 @@ if (isset($_POST['submit'])) {
     
     <!-- navigation bar -->
     <nav>
-        <h1>Perpustakaan</h1>
+        <a class="head" href="">Perpustakaan</a>
         <div class="navigation">
             <span class="tambah-buku">Tambah buku</span>
             <!-- <?php //$userId = $_GET["user"] ?> -->
             <!-- <h4><?= query("SELECT * FROM users WHERE id= '$userId'")[0]["username"] ?></h4> -->
-            <!-- <a href="register.php">Halaman register</a> -->
             <a href="logout.php">Logout</a>
         </div>
     </nav>
@@ -83,24 +82,42 @@ if (isset($_POST['submit'])) {
         
 
         <div class="insert-menu">
+            <h1>New book</h1>
             <span href="" class="close">X</span>
             <form action="" method="post" enctype="multipart/form-data">
 
-                <label for="judul_buku">Masukkan judul buku :   </label>
-                <input type="text" name="judul_buku" id="judul_buku">
+                <ul>
+                    <li>
+                        <!-- <label for="judul_buku">Masukkan judul buku :   </label> -->
+                        <input type="text" name="judul_buku" id="judul_buku" placeholder="judul buku" required>
+                    </li>
 
-                <label for="penulis">Masukkan penulis buku :  </label>
-                <input type="text" name="penulis" id="penulis">
+                    <li>
+                        <!-- <label for="penulis">Masukkan penulis buku :  </label> -->
+                        <input type="text" name="penulis" id="penulis" placeholder="penulis buku" required>
+                    </li>
 
-                <label for="kategori">Masukkan kategori buku : </label>
-                <input type="text" name="kategori" id="kategori">
+                    <li>
+                        <!-- <label for="kategori">Masukkan kategori buku : </label> -->
+                        <input type="text" name="kategori" id="kategori" placeholder="kategori buku" required>
+                    </li>
 
-                <label for="deskripsi">Masukkan deskripsi buku :</label>
-                <input type="text" name="deskripsi" id="deskripsi" maxlength="350" placeholder="Maksimal 300 karakter">
+                    <li>
+                        <!-- <label for="deskripsi">Masukkan deskripsi buku :</label> -->
+                        <!-- <input type="text name="deskripsi" id="deskripsi" maxlength="350" placeholder="deskripsi buku (Max 300 karakter)" required> -->
+                         <textarea name="deskripsi" id="deskripsi" rows="5" cols="30" placeholder="deskripsi buku (Max 300 karakter)" maxlength="350"></textarea>
+                    </li>
 
-                <input type="file" name="gambar" accept="image/jpg, image/jpeg, image/png">
-
-                <button name="submit">Submit</button>
+                    <li>
+                        <label for="inputFile">Gambar</label>
+                        <input id="inputFile" type="file" name="gambar" accept="image/jpg, image/jpeg, image/png">
+                    </li>
+                    
+                    <li>
+                        <button name="submit">Submit</button>
+                    </li>
+                </ul>
+                
             </form>
         </div>
     </div>
