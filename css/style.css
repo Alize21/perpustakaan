@@ -6,14 +6,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   padding: 0;
   margin: 0;
-  margin-bottom: 100px;
 }
 
 .container {
   width: 85vw;
   display: block;
   margin-top: 15vh;
-  margin-bottom: 100vh;
+  margin-bottom: 30vh;
 }
 
 .content {
@@ -51,7 +50,9 @@ body {
   flex: 2;
   position: relative;
 }
-.deskription h1 {
+.deskription .view {
+  text-decoration: none;
+  font-weight: bold;
   margin-top: 0;
   color: #1b164c;
   font-size: 23px;
@@ -76,17 +77,22 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: end;
-  gap: 0;
+  gap: 12px;
 }
 .categories h4 {
   height: 10px;
-  margin: 5px 0;
+  margin: 8px 0;
   color: #0c6eff;
 }
 .categories a {
   text-decoration: none;
   color: red;
   font-weight: bold;
+}
+.categories .update {
+  display: inline-block;
+  color: green;
+  margin-bottom: 5px;
 }
 
 /* insert page */
@@ -119,6 +125,10 @@ body {
 }
 #deskripsi {
   height: 40px;
+}
+.no-scroll {
+  height: 100%;
+  overflow-y: hidden;
 }
 
 /* nav bar */
@@ -161,6 +171,7 @@ nav {
 .navigation a:hover {
   color: red;
 }
+/* akhir nav-bar */
 
 .search-bar {
   display: flex;

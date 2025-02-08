@@ -21,15 +21,18 @@ keyword.addEventListener("input", function () {
 // munculkan menu insert
 tambahBuku.onclick = () => {
   insertMenu.style.display = "block";
+  document.body.classList.add("no-scroll");
 };
 if (closeButton) {
   closeButton.onclick = () => {
     insertMenu.style.display = "none";
+    document.body.classList.remove("no-scroll");
   };
 }
 document.addEventListener("click", function (e) {
   if (!insertMenu.contains(e.target) && insertMenu.style.display === "block" && !tambahBuku.contains(e.target)) {
     insertMenu.style.display = "none";
+    document.body.classList.remove("no-scroll");
   }
 });
 

@@ -66,14 +66,13 @@ if (isset($_POST['submit'])) {
                 <div class="item">
                     <div class="thumb"><img src="img/<?= $book['gambar']?>" alt="thumb"></div>
                     <div class="deskription">
-                        <h1><?= $book["judul"] ?></h1>
-                        <p><?= $book["dekripsi"] ?></p>
-                        <a href="update.php?id=<?= $book["id"] ?>">edit</a>
+                        <a class="view" href="view.php?id=<?= $book["id"] ?>"><?= $book["judul"] ?></a>
                         <div class="categories">
                             <h4><?= $book["kategori"] ?></h4>
                             <h4><?= $book["penulis"] ?></h4>
                             <h4><?= $book["status"] ?></h4>
-                            <a href="delete.php?id=<?= $book["id"] ?>&gambar=<?= $book['gambar']?>" onclick="return confirm('Hapus buku?')">hapus buku</a>
+                            <h4><a class="update" href="update.php?id=<?= $book["id"] ?>">Edit</a></h4>
+                            <a href="delete.php?id=<?= $book["id"] ?>&gambar=<?= $book['gambar']?>" onclick="return confirm('Hapus buku?')">Delete book</a>
                         </div>
                     </div>
                 </div>
