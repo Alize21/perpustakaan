@@ -62,6 +62,9 @@ nav {
   width: 18vw;
   height: 55vh;
 }
+.container .thumb h1 {
+  color: #1b164c;
+}
 .thumb div img {
   width: 100%;
   height: 100%;
@@ -92,4 +95,17 @@ table td {
   border-top: 1px solid #cfcdcd81;
   padding: 18px 0;
   max-width: 45vw;
+}
+
+@media (max-width: 576px) {
+  .container .thumb {
+    display: grid;
+    gap: 20px;
+    order: 2;
+  }
+  .container .thumb div {
+    order: 1;
+    width: 50vw;
+    height: 55vh;
+  }
 }

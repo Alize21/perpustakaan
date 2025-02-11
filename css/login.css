@@ -11,7 +11,7 @@ body {
   border: 1px solid black;
   border-radius: 10px;
   padding-bottom: 20px;
-  width: 35%;
+  width: 35vw;
   overflow: hidden;
 }
 h1 {
@@ -26,7 +26,6 @@ h1 {
 form {
   width: 100%;
   display: flex;
-  justify-content: center;
 }
 form ul {
   width: 100%;
@@ -84,4 +83,20 @@ li button:hover {
 .error {
   font-style: italic;
   color: red;
+}
+
+@media (max-width: 1032px) {
+  .container {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    width: 80vw;
+    min-width: 332px;
+  }
+  .register label {
+    min-width: 10%;
+  }
 }

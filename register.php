@@ -33,7 +33,7 @@ if (isset($_POST["register"])) {
     
     <div class="container">
         <h1>Register Form</h1>
-        <form action="" method="post">
+        <form class="register" action="" method="post">
             <ul>
                 <li>
                     <label for="username">Username : </label>

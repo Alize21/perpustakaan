@@ -36,7 +36,7 @@ body {
 
 .thumb {
   box-sizing: border-box;
-  flex: 1;
+  flex: 1.5;
   overflow: hidden;
 }
 .thumb img {
@@ -78,6 +78,7 @@ body {
   flex-direction: column;
   justify-content: end;
   gap: 12px;
+  width: max-content;
 }
 .categories h4 {
   height: 10px;
@@ -108,11 +109,21 @@ body {
   height: 50vh;
   border: 1px solid black;
   background-color: white;
-  padding: 10px;
   display: none;
   align-items: center;
   justify-content: center;
   z-index: 99;
+}
+.insert-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+.insert-menu li input,
+.insert-menu li textarea {
+  width: 80%;
 }
 
 .close {
@@ -131,12 +142,16 @@ body {
   overflow-y: hidden;
 }
 
+.insert-menu-active {
+  display: block;
+}
+
 /* nav bar */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
-  /* height: 10vh; */
+  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -162,6 +177,7 @@ nav {
 }
 .tambah-buku {
   cursor: pointer;
+  color: white;
 }
 .navigation a {
   text-decoration: none;
@@ -170,6 +186,40 @@ nav {
 }
 .navigation a:hover {
   color: red;
+}
+#menu {
+  display: none;
+}
+
+.navbar {
+  position: absolute;
+  margin-top: 10vh;
+  top: 0;
+  right: -100%;
+  width: 60vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #fff;
+  transition: 0.5s ease;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 20px;
+  margin-left: 20px;
+  text-decoration: none;
+  color: black;
+}
+.navbar a {
+  text-decoration: none;
+  color: black;
+  transition: 0.4s ease;
+}
+.navbar a:hover {
+  color: red;
+}
+.navbar-active {
+  right: 0;
 }
 /* akhir nav-bar */
 
@@ -197,4 +247,55 @@ nav {
 }
 .input input:focus {
   outline: none;
+}
+
+/* responsive */
+/* tablet */
+@media (max-width: 992px) {
+  .thumb {
+    flex: 2.5;
+  }
+
+  .insert-menu {
+    width: 70vw;
+  }
+}
+
+/* mobile */
+@media (max-width: 653px) {
+  .search-bar {
+    display: block;
+  }
+
+  .insert-menu {
+    width: 80vw;
+  }
+
+  .content {
+    display: block;
+  }
+
+  .item {
+    margin-top: 25px;
+    width: 80vw;
+    height: 40vh;
+    display: flex;
+  }
+  .thumb {
+    box-sizing: border-box;
+    flex: 2.5;
+    overflow: hidden;
+  }
+
+  .navigation span,
+  .navigation a {
+    display: none;
+  }
+  .navigation #menu {
+    display: inline-block;
+  }
+
+  .navbar span {
+    color: red;
+  }
 }

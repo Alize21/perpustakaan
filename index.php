@@ -40,15 +40,20 @@ if (isset($_POST['submit'])) {
 <body>
     
     <!-- navigation bar -->
+
     <nav>
         <a class="head" href="">Perpustakaan</a>
         <div class="navigation">
             <span class="tambah-buku">Tambah buku</span>
-            <!-- <?php //$userId = $_GET["user"] ?> -->
-            <!-- <h4><?= query("SELECT * FROM users WHERE id= '$userId'")[0]["username"] ?></h4> -->
+            <a href="logout.php">Logout</a>
+            <span id="menu"><i class="fa-solid fa-bars"></i></span>
+        </div>
+        <div class="navbar">
+            <span class="tambah-buku-res">Tambah buku</span>
             <a href="logout.php">Logout</a>
         </div>
     </nav>
+ 
 
     <!-- searchbar -->
      <div class="container">

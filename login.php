@@ -86,7 +86,7 @@ if (isset($_POST["login"])) {
                 </li>
 
                 <li>
-                    <input class="cookie" type="checkbox" name="remember" id="remember">
+                    <input class="cookie" type="checkbox" name="remember" id="remember" checked>
                     <label class="cookie" for="remember">Remember me</label>
                 </li>
 
