@@ -6,17 +6,23 @@ if (!isset($_SESSION["login"])) {
     header("Location: login.php");
 }
 
+// cek admin (currently disabled)
+$userId = $_GET["user"];
+// $cekAdmin = query("SELECT * FROM users WHERE id = '$userId'")[0]["username"];
+$cekAdmin = "admin";
+
 $books = query("SELECT * FROM books");
 
 if (isset($_POST['submit'])) {
     
     if (insert() > 0) {
-        echo "
-            <script>
-                alert('upload berhasil!');
-                document.location.href = 'index.php';
-            </script>
-        ";
+        // echo "
+        //     <script>
+        //         alert('upload berhasil!');
+        //         document.location.href = 'index.php';
+        //     </script>
+        // ";
+        header("Location: login.php?user=" . $id);
     } else {
         echo "
             <script>
@@ -44,12 +50,20 @@ if (isset($_POST['submit'])) {
     <nav>
         <a class="head" href="">Perpustakaan</a>
         <div class="navigation">
-            <span class="tambah-buku">Tambah buku</span>
+
+            <?php if ($cekAdmin === "admin") :?>
+                <span class="tambah-buku">Tambah buku</span>
+            <?php endif ?>
+
             <a href="logout.php">Logout</a>
             <span id="menu"><i class="fa-solid fa-bars"></i></span>
         </div>
         <div class="navbar">
-            <span class="tambah-buku-res">Tambah buku</span>
+
+            <?php if ($cekAdmin === "admin") :?>
+                <span style="color: black;" class="tambah-buku-res">Tambah buku</span>
+            <?php endif?>
+
             <a href="logout.php">Logout</a>
         </div>
     </nav>
@@ -71,13 +85,16 @@ if (isset($_POST['submit'])) {
                 <div class="item">
                     <div class="thumb"><img src="img/<?= $book['gambar']?>" alt="thumb"></div>
                     <div class="deskription">
-                        <a class="view" href="view.php?id=<?= $book["id"] ?>"><?= $book["judul"] ?></a>
+                        <a class="view" href="view.php?id=<?= $book["id"] ?>&user=<?= $userId ?>"><?= $book["judul"] ?></a>
                         <div class="categories">
                             <h4><?= $book["kategori"] ?></h4>
                             <h4><?= $book["penulis"] ?></h4>
                             <h4><?= $book["status"] ?></h4>
-                            <h4><a class="update" href="update.php?id=<?= $book["id"] ?>">Edit</a></h4>
-                            <a href="delete.php?id=<?= $book["id"] ?>&gambar=<?= $book['gambar']?>" onclick="return confirm('Hapus buku?')">Delete book</a>
+
+                            <?php if ($cekAdmin === "admin") :?>
+                                <h4><a class="update" href="update.php?id=<?= $book["id"] ?>&user=<?= $userId ?>">Edit</a></h4>
+                                <a href="delete.php?id=<?= $book["id"] ?>&gambar=<?= $book['gambar']?>" onclick="return confirm('Hapus buku?')">Delete book</a>
+                            <?php endif ?>
                         </div>
                     </div>
                 </div>

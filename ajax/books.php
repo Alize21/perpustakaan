@@ -2,6 +2,12 @@
 include "../functions.php";
 
 $keyword = $_GET["keyword"];
+$userId = $_GET["user"];
+
+// (curently disabled)
+// $cekAdmin = query("SELECT * FROM users WHERE id = '$userId'")[0]["username"];
+$cekAdmin = "admin";
+
 $books = query("SELECT * FROM books WHERE judul LIKE '%$keyword%'")
 ?>
 
@@ -12,13 +18,16 @@ $books = query("SELECT * FROM books WHERE judul LIKE '%$keyword%'")
         <div class="item">
             <div class="thumb"><img src="img/<?= $book['gambar']?>" alt="thumb"></div>
             <div class="deskription">
-                <a class="view" href="view.php?id=<?= $book["id"] ?>"><?= $book["judul"] ?></a>
+                <a class="view" href="view.php?id=<?= $book["id"] ?>&user=<?= $userId ?>"><?= $book["judul"] ?></a>
                 <div class="categories">
                     <h4><?= $book["kategori"] ?></h4>
                     <h4><?= $book["penulis"] ?></h4>
                     <h4><?= $book["status"] ?></h4>
-                    <h4><a class="update" href="update.php?id=<?= $book["id"] ?>">Edit</a></h4>
-                    <a href="delete.php?id=<?= $book["id"] ?>&gambar=<?= $book['gambar']?>" onclick="return confirm('Hapus buku?')">Delete book</a>
+
+                    <?php if ($cekAdmin === "admin") :?>
+                        <h4><a class="update" href="update.php?id=<?= $book["id"] ?>&user=<?= $userId ?>">Edit</a></h4>
+                        <a href="delete.php?id=<?= $book["id"] ?>&gambar=<?= $book['gambar']?>" onclick="return confirm('Hapus buku?')">Delete book</a>
+                    <?php endif ?>
                 </div>
             </div>
         </div>

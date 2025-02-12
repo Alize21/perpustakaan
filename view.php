@@ -21,7 +21,7 @@ $book = query("SELECT * FROM books WHERE id = '$bookId'")[0];
 
     <!-- navigation bar -->
     <nav>
-        <a class="head" href="index.php">Perpustakaan</a>
+        <a class="head" href="index.php?user=<?= $_GET["user"] ?>">Perpustakaan</a>
         <div class="navigation">
             <a href="logout.php">Logout</a>
         </div>

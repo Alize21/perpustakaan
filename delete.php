@@ -10,12 +10,13 @@ $id = $_GET["id"];
 $gambar = $_GET["gambar"];
 
 if (deleteItem($id, $gambar) > 0) {
-    echo "
-        <script>
-            alert('buku berhasil dihapus!');
-            document.location.href = 'index.php';
-        </script>
-    ";
+    // echo "
+    //     <script>
+    //         alert('buku berhasil dihapus!');
+    //         document.location.href = 'index.php';
+    //     </script>
+    // ";
+    header("Location: login.php?user=" . $id);
 } else {
     echo "
         <script>

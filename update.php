@@ -12,12 +12,13 @@ $book = query("SELECT * FROM books WHERE id = $bookId")[0];
 if ( isset($_POST["submit"]) ) {
     
     if (update($bookId) > 0) {
-        echo "
-            <script>
-                alert('update berhasil!');
-                document.location.href = 'index.php';
-            </script>
-        ";
+        // echo "
+        //     <script>
+        //         alert('update berhasil!');
+        //         document.location.href = 'index.php';
+        //     </script>
+        // ";
+        header("Location: login.php?user=" . $_GET["user"]);
     } else {
         echo "
             <script>
@@ -40,7 +41,7 @@ if ( isset($_POST["submit"]) ) {
 
     <!-- navigation bar -->
     <nav>
-        <a class="head" href="index.php">Perpustakaan</a>
+        <a class="head" href="index.php?user=<?= $_GET["user"] ?>">Perpustakaan</a>
         <div class="navigation">
             <!-- <span class="tambah-buku">Tambah buku</span> -->
             <!-- <?php //$userId = $_GET["user"] ?> -->
@@ -81,7 +82,7 @@ if ( isset($_POST["submit"]) ) {
 
             <li>
                 <button type="submit" name="submit">Ubah!</button>
-                <a href="index.php">Home page</a>
+                <a href="index.php?user=<?=  $_GET["user"] ?>">Home page</a>
             </li>
 
             <!-- for debug only -->

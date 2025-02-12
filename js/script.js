@@ -7,6 +7,26 @@ const content = document.querySelector(".content");
 const menu = document.querySelector("#menu");
 const navbar = document.querySelector(".navbar");
 
+// live search menggunakan ajax
+keyword.addEventListener("input", function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const xhr = new XMLHttpRequest();
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      content.innerHTML = xhr.responseText;
+    }
+  };
+
+  xhr.open("GET", "ajax/books.php?keyword=" + keyword.value + "&user=" + urlParams.get("user"), true);
+  xhr.send();
+});
+
+// munculkan hamburger menu
+menu.onclick = () => {
+  navbar.classList.toggle("navbar-active");
+};
+
 // munculkan menu insert
 tambahBuku.onclick = () => {
   insertMenu.style.display = "block";
@@ -43,23 +63,4 @@ document.querySelector(".insert-menu").addEventListener("submit", function (e) {
     e.preventDefault();
     alert("please insert image first");
   }
-});
-
-// munculkan hamburger menu
-menu.onclick = () => {
-  navbar.classList.toggle("navbar-active");
-};
-
-// live search menggunakan ajax
-keyword.addEventListener("input", function () {
-  const xhr = new XMLHttpRequest();
-
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      content.innerHTML = xhr.responseText;
-    }
-  };
-
-  xhr.open("GET", "ajax/books.php?keyword=" + keyword.value, true);
-  xhr.send();
 });

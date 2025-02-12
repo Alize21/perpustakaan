@@ -16,12 +16,6 @@ if (isset($_COOKIE["id"]) && isset($_COOKIE["key"])) {
 
 }
 
-// arahkan user ke halaman utama jika ada session
-if (isset($_SESSION["login"])) {
-    header("Location: index.php");
-    exit;
-}
-
 if (isset($_POST["login"])) {
 
     
@@ -41,14 +35,21 @@ if (isset($_POST["login"])) {
             }
 
             $_SESSION["login"] = true;
-            // header("Location: index.php?user=" . $row["id"]);
-            header("Location: index.php");
+            header("Location: index.php?user=" . $row["id"]);
+            // header("Location: index.php");
             exit;
         }
-
+        
     }
- 
+    
     $error = true;
+}
+
+// arahkan user ke halaman utama jika ada session
+if (isset($_SESSION["login"])) {
+    header("Location: index.php?user=" . $row["id"]);
+    // header("Location: index.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
